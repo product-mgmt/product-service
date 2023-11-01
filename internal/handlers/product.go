@@ -5,12 +5,12 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ankeshnirala/order-mgmt/common-service/constants/messages"
-	"github.com/ankeshnirala/order-mgmt/common-service/constants/procedures"
-	"github.com/ankeshnirala/order-mgmt/common-service/constants/tables"
-	"github.com/ankeshnirala/order-mgmt/common-service/types"
-	"github.com/ankeshnirala/order-mgmt/common-service/utils/commfunc"
 	"github.com/ankeshnirala/sqlscan"
+	"github.com/product-mgmt/common-service/constants/messages"
+	"github.com/product-mgmt/common-service/constants/procedures"
+	"github.com/product-mgmt/common-service/constants/tables"
+	"github.com/product-mgmt/common-service/types"
+	"github.com/product-mgmt/common-service/utils/commfunc"
 )
 
 func (s *Storage) GetProductsHandler(w http.ResponseWriter, r *http.Request) error {

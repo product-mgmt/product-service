@@ -8,9 +8,9 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 
-	"github.com/ankeshnirala/order-mgmt/common-service/storage"
-	"github.com/ankeshnirala/order-mgmt/common-service/utils/shutdown"
 	"github.com/ankeshnirala/order-mgmt/product-service/internal/routers"
+	"github.com/product-mgmt/common-service/storage"
+	"github.com/product-mgmt/common-service/utils/shutdown"
 )
 
 type Server struct {
