@@ -10,6 +10,7 @@ import (
 func (s *Storage) RegisterAuthRoutes() {
 	ctrl := handlers.New(s.logger, s.sqlStore)
 	midd := middleware.New(s.logger, s.sqlStore)
+
 	publicRoute := s.router.PathPrefix(endpoints.PRODUCT_BASE_PATH).Subrouter()
 	privateRoute := s.router.PathPrefix(endpoints.PRODUCT_BASE_PATH).Subrouter()
 
@@ -18,8 +19,24 @@ func (s *Storage) RegisterAuthRoutes() {
 
 	// public routes
 	publicRoute.HandleFunc(endpoints.LIST, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
-	// publicRoute.HandleFunc(endpoints.SIGNIN_PATH, commfunc.MakeHTTPHandleFunc(ctrl.SigninHandler)).Methods("POST")
+	publicRoute.HandleFunc(endpoints.VIEW, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+
+	publicRoute.HandleFunc(endpoints.CATEGORY+endpoints.LIST, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+	publicRoute.HandleFunc(endpoints.CATEGORY+endpoints.VIEW, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+
+	publicRoute.HandleFunc(endpoints.INVENTORY+endpoints.LIST, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+	publicRoute.HandleFunc(endpoints.INVENTORY+endpoints.VIEW, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
 
 	// // private routes
-	// privateRoute.HandleFunc(endpoints.PROFILE_PATH, commfunc.MakeHTTPHandleFunc(ctrl.ProfileHandler)).Methods("GET")
+	privateRoute.HandleFunc(endpoints.ADD, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+	privateRoute.HandleFunc(endpoints.UPDATE, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+	privateRoute.HandleFunc(endpoints.DELETE, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+
+	privateRoute.HandleFunc(endpoints.CATEGORY+endpoints.ADD, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+	privateRoute.HandleFunc(endpoints.CATEGORY+endpoints.UPDATE, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+	privateRoute.HandleFunc(endpoints.CATEGORY+endpoints.DELETE, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+
+	privateRoute.HandleFunc(endpoints.INVENTORY+endpoints.ADD, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+	privateRoute.HandleFunc(endpoints.INVENTORY+endpoints.UPDATE, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
+	privateRoute.HandleFunc(endpoints.INVENTORY+endpoints.DELETE, commfunc.MakeHTTPHandleFunc(ctrl.GetProductsHandler)).Methods("GET")
 }
