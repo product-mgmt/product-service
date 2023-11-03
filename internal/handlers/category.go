@@ -30,12 +30,12 @@ func (s *Storage) GetCategoryHandler(w http.ResponseWriter, r *http.Request) err
 		return err
 	}
 
-	var users []types.ProductCategory
-	if err := sqlscan.Rows(&users, rows); err != nil {
+	var category []types.ProductCategory
+	if err := sqlscan.Rows(category, rows); err != nil {
 		return err
 	}
 
-	return commfunc.WriteJSON(w, http.StatusOK, users)
+	return commfunc.WriteJSON(w, http.StatusOK, category)
 }
 
 func (s *Storage) AddCategoryHandler(w http.ResponseWriter, r *http.Request) error {
