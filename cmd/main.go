@@ -8,8 +8,8 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
 
-	"github.com/ankeshnirala/order-mgmt/product-service/cmd/api"
 	"github.com/product-mgmt/common-service/storage/sql"
+	"github.com/product-mgmt/product-service/cmd/api"
 )
 
 func main() {

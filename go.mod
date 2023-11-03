@@ -1,4 +1,4 @@
-module github.com/ankeshnirala/order-mgmt/product-service
+module github.com/product-mgmt/product-service
 
 go 1.21.3
 
